@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next;
+};
+
+int main() {
+
+    struct Node *head, *first, *second;
+
+    head = (struct Node*)malloc(sizeof(struct Node));
+    first = (struct Node*)malloc(sizeof(struct Node));
+    second = (struct Node*)malloc(sizeof(struct Node));
+
+    head->data = 10;
+    first->data = 20;
+    second->data = 30;
+
+    head->next = first;
+    first->next = second;
+    second->next = NULL;
+
+    // Insert new node at beginning
+    struct Node *newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = 5;
+    newNode->next = head;
+    head = newNode;
+
+    // Print linked list
+    struct Node *temp = head;
+
+    while (temp != NULL) {
+        printf("%d\n", temp->data);
+        temp = temp->next;
+    }
+
+    return 0;
+}
